@@ -1,0 +1,447 @@
+﻿@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
+/** Para todo el documento **/
+
+
+:root {
+    font-size: 18px;
+    --Color_Menu: rgb(4, 11, 23,0.75);
+    --Color_Transparencia: rgb(4, 11, 23,0.2); /* Color del Estilo de Pagina */
+    --ColorMenu_hover: rgb(16, 175, 186);
+    --AnchoLimitado: 1150px;
+    --ColorTexto: #f7f2f2;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazmiento lento hacia el alcla */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: #F5F5F5; /*Color de fondo no tan blanco*/
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--ColorTexto); /*Color del Texto*/
+}
+
+
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+
+@mixin movil() {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+
+
+    /******  Header  (Logo y Menu) ******************************************************/
+
+.Header {
+    background: var(--Color_Menu);
+    color: var(--ColorTexto); /*Color del Texto*/
+    padding: 0 0; /* arriba/abajo es de "2rem" y derecha/izquierda es "0" */
+
+    position: fixed; /* Posicion absoluta */
+    top: 0; /* Posicion absoluta Arriba*/
+    left: 0; /* Posicion absoluta Izquierda*/
+    right: 0; /* Posicion absoluta Dereha*/
+    z-index: 1; /* Posiciona encima de Todo */
+
+    box-shadow: 9px 9px 18px rgb(4, 11, 23); /* Sombra recuadro */
+
+    text-shadow: black 0.1em 0.1em 0.2em; /* Sombra Texto */
+
+    
+
+    .Logo_Menu {
+        /*width: 85%;*/ /* Ancho */
+        max-width: var(--AnchoLimitado);
+        margin: 0 auto; /* arriba/abajo es "0" y derecha/izquierda es "auto (centrado los contenedores internos hoeizontalmente)" */
+
+        display: flex; /* covierte en Flexible el contenedor */
+        justify-content: space-between; /* Distribuye los elementos internos  */
+        align-items: center; /*Centra el contenido verticalmente*/
+        flex-wrap: wrap; /* si no entra el contenido lo envia abajo */
+
+
+        img {
+            width: 14rem;
+        }
+
+        .menu-icon {
+            display: none;
+            color: var(--ColorTexto); /*Color del Texto*/
+            text-decoration: none; /* Quita el subrrallado de los link */
+            font-size: 1rem;
+
+
+            &:hover {
+                background: var(--ColorMenu_hover);
+            }
+
+            span {
+                padding-right: 0.1rem;
+            }
+        }
+
+        .navigation ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+            }
+
+            li a {
+                color: var(--ColorTexto); /*Color del Texto*/
+                text-decoration: none;
+                display: block;
+                padding: 0.5rem 1rem;
+                transition: all 0.3s linear;
+                border-radius: 5px;
+            }
+
+            li a:hover {
+                background: var(--ColorMenu_hover);
+            }
+        }
+    }
+}
+    /*------------------------------------------------------------------*/
+    /*------------------------------------------------------------------*/
+    /*-------------------   CLASES COMUNES   ---------------------------*/
+    /*------------------------------------------------------------------*/
+    /*------------------------------------------------------------------*/
+
+.Segmento_Flex {
+    display: flex;
+    flex-flow: column nowrap; /* Contenido en filas y no bajan si no entra*/
+    justify-content: center; /* Contenido Justificado horizontalmente */
+    align-items: center; /* Contenido Justificado Verticamnete */
+        
+    background-attachment: fixed; /* Establecemos una posicion fija para la imagen */
+    background-repeat: no-repeat; /* Indicamos que no se repetira */
+    background-size: cover; /* Encajamos la imagen al 100% del ancho */
+    background-position: center; /* Centra la imagen aun cuando cambie de tamaño */
+
+
+    .Contenedor {
+        width: 100%; /* Ancho */
+        margin: 18rem 0; /* arriba/abajo es "18rem" y derecha/izquierda es "0" */
+
+        background-color: var(--Color_Transparencia);
+        /*box-shadow: 9px 9px 15px rgb(4, 11, 23);*/ /* Sombra recuadro */
+        border-radius: 5px;
+        box-shadow: 20px 20px 60px rgb(4, 11, 23), -20px -20px 60px rgb(4, 11, 23); /* Sombra recuadro */
+
+
+        .Ancho_Limitado {
+            max-width: var(--AnchoLimitado); /** Maximo Ancho **/
+            margin: auto; /* lo Centra Horizontalmente */
+
+            .Titulo {
+                margin: 0 auto; /* arriba/abajo es "0" y derecha/izquierda es "auto (centra este contenedor)" */
+                font-size: 2.5rem;
+                text-align: center;
+                font-weight: bold;
+                text-shadow: black 0.1em 0.1em 0.2em; /* Sombra Texto */
+                padding-top: 1rem;
+            }
+
+            .Descripcion {
+                margin: 0 auto; /* arriba/abajo es "0" y derecha/izquierda es "auto (centra este contenedor)" */
+                font-size: 1.4rem;
+                text-align: center;
+                font-weight: bold;
+                padding-bottom: 2rem;
+                padding-top: 1rem;
+            }
+
+            .Bloque_Flex {
+                display: flex;
+                flex-flow: row wrap; /* Contenido en filas y bajan si no entra*/
+                justify-content: center; /* Contenido Justificado Verticamnete  */
+                align-items: center; /* Contenido Justificado horizontalmente */
+
+                .Bloque {
+                    padding: 1rem 1.3rem;
+
+                    img {
+                        width: 100%;
+                        box-shadow: 9px 9px 15px rgb(38, 37, 37); /* Sombra recuadro */
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+    .Division {
+        background-color: var(--Color_Transparencia);
+        font-size: 1.1rem;
+        color: var(--ColorTexto);
+        text-align: center;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+/*-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/*---- .Introduccion ------------------------------------------------*/
+
+.Introduccion {
+    background-image: url("../img/Fondo.jpg");
+
+    @include movil() {
+        background-image: url("../img/Fondo.jpg");
+    }
+}
+    /*----- .QuienesSomos ----------------------------------------------*/
+
+.QuienesSomos {
+    background-image: url("../img/Fondo.jpg");
+
+    @include movil() {
+        background-image: url("../img/Fondo.jpg");
+    }
+
+    .Contenedor .Ancho_Limitado .Bloque_Flex {
+
+        .Bloque {
+            width: 50%;
+
+            @include movil() {
+                width: 100%;
+            }
+            /* Ancho del Bloque */
+
+            img {
+                box-shadow: none /* Sombra recuadro */
+            }
+        }
+
+        .Bloque_Texto {
+            font-size: 1.1rem;
+
+            @include movil() {
+                order: 1; /* Mueve este bloque al principio */
+            }
+        }
+    }
+}
+    /*----- .Servicios ----------------------------------------------*/
+
+.Servicios {
+    background-image: url("../img/Fondo.jpg");
+
+    @include movil() {
+        background-image: url("../img/Fondo_02.jpg");
+    }
+
+    .Contenedor .Ancho_Limitado .Bloque_Flex {
+
+        .Bloque {
+            width: 25%;
+
+            @include movil() {
+                width: 50%; /* Ancho del Bloque */
+            }
+        }
+    }
+}
+    /*----- .Clientes ----------------------------------------------*/
+
+.Clientes {
+    background-image: url("../img/Fondo.jpg");
+
+    @include movil() {
+        background-image: url("../img/Fondo_02.jpg");
+    }
+
+    .Contenedor .Ancho_Limitado .Bloque_Flex {
+
+        .Bloque {
+            width: 90%;
+
+            img {
+                box-shadow: none /* Sombra recuadro */
+            }
+        }
+    }
+}
+/*----- .Ubiquenos ----------------------------------------------*/
+
+.Ubiquenos {
+    background-image: url("../img/Fondo.jpg");
+
+    @include movil() {
+        background-image: url("../img/Fondo_02.jpg");
+    }
+}
+
+/*----- .Contactenos ----------------------------------------------*/
+.Contactenos {
+    background-image: url("../img/Fondo.jpg");
+
+    @include movil() {
+        background-image: url("../img/Fondo_02.jpg");
+    }
+
+    .Contenedor .Ancho_Limitado .Descripcion img {
+        width: 9rem;
+    }
+
+    .Division {
+        background-color: var(--Color_Transparencia);
+        font-size: 1.4rem;
+        color: #fff; /*Color del Texto*/
+        text-align: center;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+}
+    /*----- footer --------------------------------------------*/
+
+    footer {
+        background: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+
+
+        div [class^="icon-"] { /* Todas las clases que comiencen con icon- */
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+            font-size: 30px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: aqua;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    }
+    /* ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ */
+    /*                                      INICIO del Media Query                                 */
+    /* ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ */
+    /************************************************************************************/
+    /************************************************************************************/
+    /************************************************************************************/
+    /************************************************************************************/
+    /******  Header  (Logo y Menu) ******************************************************/
+
+    @media only screen and (max-width: 767px) {
+        :root {
+            font-size: 13px;
+        }
+        /******  Header  ********************************************************************/
+
+        .Header {
+
+            .Logo_Menu {
+
+                .menu-icon {
+                    display: block;
+                    cursor: pointer;
+                    padding: 0.5rem 1rem;
+                }
+
+                .navigation {
+                    width: 100%;
+                    margin-top: 1rem;
+
+                    ul {
+                        display: none;
+
+                        &.show {
+                            display: block;
+                        }
+
+                        li {
+                            display: block;
+
+
+                            a {
+                                display: block;
+                                padding: 0.5rem 0;
+                                transition: all 0.3s linear;
+                                border-radius: 5px;
+                            }
+
+                            a:hover {
+                                background: #4a4a4a;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*----- .Banner_Titulo ----------------------------------------------*/
+
+/*        .Introduccion {
+            background-image: url("../img/Fondo_02.jpg");
+        }
+*/        /*----- .QuienesSomos ----------------------------------------------*/
+
+        /*.QuienesSomos {
+            background-image: url("../img/Fondo_02.jpg");
+
+
+            .Contenedor .Ancho_Limitado .Bloque_Flex {
+
+                .Bloque {
+                    width: 100%;*/ /* Ancho del Bloque */
+                /*}
+
+                .Bloque_Texto {
+                    order: 1;*/ /* Mueve este bloque al principio */
+                /*}
+            }
+        }*/
+        /*----- .Servicios ----------------------------------------------*/
+
+        /*.Servicios {
+            background-image: url("../img/Fondo_02.jpg");
+
+            .Contenedor .Ancho_Limitado .Bloque_Flex .Bloque {
+                width: 50%;*/ /* Ancho del Bloque */
+            /*}
+        }*/
+        /*----- .Clientes ----------------------------------------------*/
+
+        /*.Clientes {
+            background-image: url("../img/Fondo_02.jpg");
+        }*/
+        /*----- .Ubiquenos ----------------------------------------------*/
+
+        /*.Ubiquenos {
+            background-image: url("../img/Fondo_02.jpg");
+        }*/
+        /*----- .Contactenos ----------------------------------------------*/
+
+        /*.Contactenos {
+            background-image: url("../img/Fondo_02.jpg");
+        }*/
+    }
